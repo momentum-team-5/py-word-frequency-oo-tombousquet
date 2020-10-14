@@ -112,10 +112,16 @@ class FreqPrinter:
        rights | 6    ******
         right | 6    ******
         """
+ 
+        format_width = max(len(w) for w in self.freqs)
+        output_string = ""
 
+        for w in sorted(self.freqs, key=self.freqs.get, reverse=True):
+                count = self.freqs[w]
+                output_string += f"{w:>{format_width}} : {count} {'*' * count}\n"
+              
+        print(output_string)
         
-
-        print(self.freqs)
 
 
 if __name__ == "__main__":
